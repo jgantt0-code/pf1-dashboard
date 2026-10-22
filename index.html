@@ -18,30 +18,34 @@
   --pos-tint:#2766A8;
   --font-display:"Barlow Condensed","Arial Narrow",Arial,sans-serif;
   --font-body:"Barlow",system-ui,-apple-system,"Segoe UI",sans-serif;
-  --pat-line:#1E6B49;    /* syringe outline */
-  --pat-liquid:#5FAE84;  /* syringe dose */
-  --pat-op:.15;
+  --c-ink:#1F3A30;       /* cartoon outline */
+  --c-w:#FFFFFF;
+  --c1:#6FCFA0; --c2:#6BB6F2; --c3:#FFD35C; --c4:#FF8F8F; --c5:#D9955C;
+  --pat-op:.34;
   color-scheme:light;
 }
 @media (prefers-color-scheme:dark){
   :root:not([data-theme="light"]){
     --bg:#0E1512;--surface:#16201B;--surface-2:#1D2924;--ink:#E6EEE9;--ink-2:#A6B5AC;--ink-3:#84948B;
-    --line:#2A3832;--accent:#5FC08D;--heat:#2F7D58;--pos:#6AA6E2;--neg:#E58A4F;--pat-line:#5FC08D;--pat-liquid:#2F7D58;--pat-op:.16;color-scheme:dark;
+    --line:#2A3832;--accent:#5FC08D;--heat:#2F7D58;--pos:#6AA6E2;--neg:#E58A4F;--c-ink:#A9E8C9;--c-w:#20332B;--c1:#2FA073;--c2:#3C86C9;--c3:#D9A93A;--c4:#D96A6A;--c5:#A8693A;--pat-op:.26;color-scheme:dark;
   }
 }
 :root[data-theme="dark"]{
   --bg:#0E1512;--surface:#16201B;--surface-2:#1D2924;--ink:#E6EEE9;--ink-2:#A6B5AC;--ink-3:#84948B;
-  --line:#2A3832;--accent:#5FC08D;--heat:#2F7D58;--pos:#6AA6E2;--neg:#E58A4F;--pat-line:#5FC08D;--pat-liquid:#2F7D58;--pat-op:.16;color-scheme:dark;
+  --line:#2A3832;--accent:#5FC08D;--heat:#2F7D58;--pos:#6AA6E2;--neg:#E58A4F;--c-ink:#A9E8C9;--c-w:#20332B;--c1:#2FA073;--c2:#3C86C9;--c3:#D9A93A;--c4:#D96A6A;--c5:#A8693A;--pat-op:.26;color-scheme:dark;
 }
 *{box-sizing:border-box}
 body{background:var(--bg);color:var(--ink);font-family:var(--font-body);font-size:15px;line-height:1.45;
   padding-block:0 56px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
 .wrap{max-width:1080px;margin:0 auto;position:relative;z-index:1}
-/* needle wallpaper */
+/* cartoon wallpaper */
 .needles{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;opacity:var(--pat-op)}
-.needles .ln{fill:none;stroke:var(--pat-line);stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
-.needles .dose{fill:var(--pat-liquid);stroke:none}
-.needles .drop{fill:var(--pat-liquid);stroke:none}
+.needles .o{stroke:var(--c-ink);stroke-width:3;stroke-linecap:round;stroke-linejoin:round;fill:none}
+.needles .k{fill:var(--c-ink);stroke:none}
+.needles .n{stroke:none}
+.needles .f1{fill:var(--c1)}.needles .f2{fill:var(--c2)}.needles .f3{fill:var(--c3)}.needles .f4{fill:var(--c4)}.needles .f5{fill:var(--c5)}.needles .fw{fill:var(--c-w)}
+@media (max-width:560px){.needles{opacity:calc(var(--pat-op)*.72)}}
+.needles .sm{stroke:var(--c-ink);stroke-width:2.6;stroke-linecap:round;fill:none}
 header{padding-block:28px 18px;display:flex;flex-wrap:wrap;gap:6px 24px;align-items:baseline;justify-content:space-between}
 h1{font-family:var(--font-display);font-weight:700;font-size:clamp(34px,6vw,52px);line-height:1;letter-spacing:.01em;text-transform:uppercase;margin:0;text-wrap:balance}
 .meta{color:var(--ink-2);font-size:14px;margin:0}
@@ -226,27 +230,63 @@ footer p{margin:0 0 8px}
 
 <svg class="needles" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
   <defs>
-    <symbol id="syr" viewBox="0 0 150 26" overflow="visible">
-      <rect class="dose" x="44" y="7" width="54" height="12" rx="1"/>
-      <line class="ln" x1="3" y1="3" x2="3" y2="23"/>
-      <line class="ln" x1="3" y1="13" x2="31" y2="13"/>
-      <rect class="ln" x="31" y="8.5" width="6" height="9" rx="1"/>
-      <rect class="ln" x="36" y="5" width="70" height="16" rx="2"/>
-      <line class="ln" x1="34" y1="1" x2="34" y2="25"/>
-      <line class="ln" x1="52" y1="5" x2="52" y2="9"/>
-      <line class="ln" x1="62" y1="5" x2="62" y2="10"/>
-      <line class="ln" x1="72" y1="5" x2="72" y2="9"/>
-      <line class="ln" x1="82" y1="5" x2="82" y2="10"/>
-      <line class="ln" x1="92" y1="5" x2="92" y2="9"/>
-      <path class="ln" d="M106 8 L114 11 L114 15 L106 18"/>
-      <rect class="ln" x="114" y="11" width="6" height="4"/>
-      <line class="ln" x1="120" y1="13" x2="149" y2="13"/>
+    <symbol id="syr" viewBox="0 0 160 40" overflow="visible">
+      <rect class="o f3" x="2" y="5" width="8" height="30" rx="4"/>
+      <line class="o" x1="10" y1="20" x2="42" y2="20"/>
+      <rect class="o fw" x="42" y="6" width="78" height="28" rx="10"/>
+      <rect class="n f1" x="55" y="11" width="58" height="18" rx="7"/>
+      <rect class="o f3" x="37" y="2" width="7" height="36" rx="3.5"/>
+      <circle class="k" cx="77" cy="18" r="2.8"/><circle class="k" cx="93" cy="18" r="2.8"/>
+      <circle class="n f4" cx="69" cy="24" r="3.4"/><circle class="n f4" cx="101" cy="24" r="3.4"/>
+      <path class="sm" d="M80 23 Q85 28.5 90 23"/>
+      <path class="o fw" d="M120 14 L133 17 L133 23 L120 26 Z"/>
+      <line class="o" x1="133" y1="20" x2="158" y2="20"/>
     </symbol>
-    <pattern id="needlePat" width="280" height="200" patternUnits="userSpaceOnUse">
-      <use href="#syr" x="0" y="0" width="150" height="26" transform="translate(28 128) rotate(-32)"/>
-      <use href="#syr" x="0" y="0" width="150" height="26" transform="translate(150 188) rotate(-32) scale(.72)"/>
-      <circle class="drop" cx="205" cy="26" r="3.2"/><circle class="drop" cx="222" cy="44" r="2.2"/><circle class="drop" cx="193" cy="52" r="1.8"/>
-      <circle class="drop" cx="70" cy="168" r="2.6"/><circle class="drop" cx="96" cy="184" r="1.9"/>
+    <symbol id="vial" viewBox="0 0 34 50" overflow="visible">
+      <rect class="o f4" x="7" y="2" width="20" height="9" rx="3"/>
+      <rect class="o fw" x="10" y="11" width="14" height="6"/>
+      <rect class="o fw" x="3" y="16" width="28" height="32" rx="7"/>
+      <path class="n f2" d="M5.5 31 H28.5 V41 a4 4 0 0 1 -4 4 H9.5 a4 4 0 0 1 -4 -4 Z"/>
+      <path class="o" d="M17 20 v8 M13 24 h8"/>
+    </symbol>
+    <symbol id="band" viewBox="0 0 64 24" overflow="visible">
+      <rect class="o f5" x="2" y="2" width="60" height="20" rx="10"/>
+      <rect class="o fw" x="22" y="2" width="20" height="20"/>
+      <circle class="k" cx="10" cy="8" r="1.5"/><circle class="k" cx="10" cy="16" r="1.5"/><circle class="k" cx="15" cy="12" r="1.5"/>
+      <circle class="k" cx="54" cy="8" r="1.5"/><circle class="k" cx="54" cy="16" r="1.5"/><circle class="k" cx="49" cy="12" r="1.5"/>
+    </symbol>
+    <symbol id="ball" viewBox="0 0 52 30" overflow="visible">
+      <path class="o f5" d="M2 15 Q26 -5 50 15 Q26 35 2 15 Z"/>
+      <path class="o" d="M17 15 H35 M21 11 V19 M26 11 V19 M31 11 V19"/>
+      <path class="o" d="M9 9.5 Q7 15 9 20.5 M43 9.5 Q45 15 43 20.5"/>
+    </symbol>
+    <symbol id="spark" viewBox="0 0 20 20" overflow="visible">
+      <path class="o f3" d="M10 1 Q11.5 8.5 19 10 Q11.5 11.5 10 19 Q8.5 11.5 1 10 Q8.5 8.5 10 1 Z"/>
+    </symbol>
+    <symbol id="plus" viewBox="0 0 16 16" overflow="visible"><path class="o" style="stroke-width:3.6" d="M8 2 V14 M2 8 H14"/></symbol>
+    <symbol id="drop" viewBox="0 0 14 20" overflow="visible"><path class="o f2" d="M7 2 Q12.5 10 12.5 13 a5.5 5.5 0 0 1 -11 0 Q1.5 10 7 2 Z"/></symbol>
+    <pattern id="needlePat" width="440" height="380" patternUnits="userSpaceOnUse">
+      <use href="#syr" x="-80" y="-20" width="160" height="40" transform="translate(110 82) rotate(-25)"/>
+      <use href="#ball" x="-26" y="-15" width="52" height="30" transform="translate(335 62) rotate(20)"/>
+      <use href="#vial" x="-17" y="-25" width="34" height="50" transform="translate(255 150) rotate(-12)"/>
+      <use href="#band" x="-32" y="-12" width="64" height="24" transform="translate(385 195) rotate(-40)"/>
+      <use href="#syr" x="-48" y="-12" width="96" height="24" transform="translate(190 222) rotate(35)"/>
+      <use href="#ball" x="-21" y="-12" width="42" height="24" transform="translate(80 235) rotate(-30)"/>
+      <use href="#syr" x="-68" y="-17" width="136" height="34" transform="translate(320 305) rotate(18)"/>
+      <use href="#vial" x="-14" y="-21" width="28" height="42" transform="translate(60 328) rotate(15)"/>
+      <use href="#band" x="-28" y="-10" width="56" height="20" transform="translate(190 335) rotate(25)"/>
+      <use href="#spark" x="-10" y="-10" width="20" height="20" transform="translate(32 28) rotate(8)"/>
+      <use href="#spark" x="-8" y="-8" width="16" height="16" transform="translate(405 28)"/>
+      <use href="#spark" x="-9" y="-9" width="18" height="18" transform="translate(150 175)"/>
+      <use href="#spark" x="-8" y="-8" width="16" height="16" transform="translate(412 340)"/>
+      <use href="#plus" x="-8" y="-8" width="16" height="16" transform="translate(215 24)"/>
+      <use href="#plus" x="-7" y="-7" width="14" height="14" transform="translate(28 170)"/>
+      <use href="#plus" x="-7" y="-7" width="14" height="14" transform="translate(285 232) rotate(15)"/>
+      <use href="#plus" x="-8" y="-8" width="16" height="16" transform="translate(120 355)"/>
+      <use href="#drop" x="-6" y="-9" width="12" height="18" transform="translate(40 110) rotate(-10)"/>
+      <use href="#drop" x="-6" y="-9" width="12" height="18" transform="translate(392 112) rotate(12)"/>
+      <use href="#drop" x="-5" y="-8" width="10" height="16" transform="translate(145 20)"/>
+      <use href="#drop" x="-5" y="-8" width="10" height="16" transform="translate(255 360) rotate(8)"/>
     </pattern>
   </defs>
   <rect width="100%" height="100%" fill="url(#needlePat)"/>
